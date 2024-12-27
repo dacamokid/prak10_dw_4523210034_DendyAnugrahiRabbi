@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Blog Template</title>
+    <meta name="author" content="Adjie Firmansyah">
+    <meta name="description" content="">
+
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+</head>
+<body class="bg-black font-family-karla">
+
+    <!-- Top Bar Nav -->
+    <nav class="w-full py-4 bg-blue-800 shadow">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+
+            <nav>
+                <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="flex items-center text-lg no-underline text-white pr-6">
+                <a class="" href="#">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a class="pl-6" href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="pl-6" href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="pl-6" href="#">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- Text Header -->
+    <header class="w-full container mx-auto">
+        <div class="flex flex-col items-center py-12">
+            <a class="font-bold text-white uppercase hover:text-white text-5xl" href="#">
+                Segelintir Info Penting UP
+            </a>
+            <p class="text-lg text-white">
+                Info berita hangat
+            </p>
+        </div>
+    </header>
+
+    <!-- Topic Nav -->
+    <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
+        <div class="block sm:hidden">
+            <a
+                href="#"
+                class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
+                @click="open = !open"
+            >
+                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+            </a>
+        </div>
+        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
+            <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Kampus</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Petinggi</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Dosen</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Mahasiswa</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Acara</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mx-auto flex flex-wrap py-6">
+
+        <!-- Posts Section -->
+        <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+
+            <article class="flex flex-col shadow my-4">
+                <!-- Article Image -->
+                <a href="#" class="hover:opacity-75">
+                    <img src="data:image/jpeg;base64,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">
+                </a>
+                <div class="bg-white flex flex-col justify-start p-6">
+                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Kampus</a>
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">UNIVERSITAS PANCASILA</a>
+                    <p href="#" class="text-sm pb-3">
+                        By <a href="#" class="font-semibold hover:text-gray-800">Adjie Firmansyah</a>, Published on November 26th, 2024
+                    </p>
+                    <a href="#" class="pb-6">Kampus yang terletak di Srengseng Sawah, Kota Jakarta Selatan</a>
+                    <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="flex flex-col shadow my-4">
+                <!-- Article Image -->
+                <a href="#" class="hover:opacity-75">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-HfAMwHLlxIkT0neajGsFj56Ch1rdb9_uOPZnDFJt9FasA4JLDmM1UTHW6go82UOPio&usqp=CAU">
+                </a>
+                <div class="bg-white flex flex-col justify-start p-6">
+                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Petinggi</a>
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Prof. Dr. Ir. Marsudi Wahyu Kisworo, IPU.</a>
+                    <p href="#" class="text-sm pb-3">
+                        By <a href="#" class="font-semibold hover:text-gray-800">Adjie Firmansyah</a>, Published on January 26th, 2024
+                    </p>
+                    <a href="#" class="pb-6">Prof. Dr. Ir. Marsudi Wahyu Kisworo, I.P.U. (lahir 29 Oktober 1958) adalah Guru Besar Ilmu Komputer Indonesia yang saat ini berafiliasi dengan Universitas Pancasila.</a>
+                    <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="flex flex-col shadow my-4">
+                <!-- Article Image -->
+                <a href="#" class="hover:opacity-75">
+                    <img src="https://i1.rgstatic.net/ii/profile.image/837652181962752-1576723251011_Q512/Noor-Suryaningsih.jpg">
+                </a>
+                <div class="bg-white flex flex-col justify-start p-6">
+                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Dosen</a>
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Noor Suryaningsih, ST.,MT</a>
+                    <p href="#" class="text-sm pb-3">
+                        By <a href="#" class="font-semibold hover:text-gray-800">Adjie Firmansyah</a>, Published on October 22nd, 2019
+                    </p>
+                    <a href="#" class="pb-6">Salah satu Dosen Universitas Pancasila yang menjabat sebagai Kepala Bagian Kemahasiswaan.</a>
+                    <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Pagination -->
+            <div class="flex items-center py-8">
+                <a href="#" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
+                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
+                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+
+        </section>
+
+        <!-- Sidebar Section -->
+        <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <p class="text-xl font-semibold pb-5">About Us</p>
+                <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
+                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+                    Get to know us
+                </a>
+            </div>
+
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <p class="text-xl font-semibold pb-5">Instagram</p>
+                <div class="grid grid-cols-3 gap-3">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
+                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+                </div>
+                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
+                    <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
+                </a>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <footer class="w-full border-t bg-blue-600 pb-12">
+        <div
+            class="relative w-full flex items-center invisible md:visible md:pb-12"
+            x-data="getCarouselData()"
+        >
+            <button
+                class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
+                x-on:click="decrement()">
+                &#8592;
+            </button>
+            <template x-for="image in images.slice(currentIndex, currentIndex + 6)" :key="images.indexOf(image)">
+                <img class="w-1/6 hover:opacity-75" :src="image">
+            </template>
+            <button
+                class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
+                x-on:click="increment()">
+                &#8594;
+            </button>
+        </div>
+        <div class="w-full container mx-auto flex flex-col items-center">
+            <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
+                <a href="#" class="uppercase px-3">About Us</a>
+                <a href="#" class="uppercase px-3">Privacy Policy</a>
+                <a href="#" class="uppercase px-3">Terms & Conditions</a>
+                <a href="#" class="uppercase px-3">Contact Us</a>
+            </div>
+            <div class="uppercase pb-6">&copy; myblog.com</div>
+        </div>
+    </footer>
+
+    <script>
+        function getCarouselData() {
+            return {
+                currentIndex: 0,
+                images: [
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
+                ],
+                increment() {
+                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
+                },
+                decrement() {
+                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
+                },
+            }
+        }
+    </script>
+
+</body>
+</html>
